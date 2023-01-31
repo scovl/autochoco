@@ -50,6 +50,12 @@ audacity
 vlc
 shotcut
 blender
+python37
+notepadplusplus.install
+vscode
+intellijidea-community
+firefox
+googlechrome
 ```
 
 * Será gerado um arquivo `registro.log` onde contém tudo o que ocorreu em powershell e `error.log` para erros.
