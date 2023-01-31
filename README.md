@@ -4,7 +4,7 @@ Script de Instalação Automatizada de Aplicativos via Chocolatey
 Este script é destinado a automatizar a instalação de vários aplicativos em um sistema Windows utilizando o gerenciador de pacotes Chocolatey. O script verifica se o Chocolatey está instalado e, se não estiver, o instala antes de instalar os aplicativos especificados.
 Requisitos
 
-* Sistema operacional Windows
+* Sistema operacional: Windows/Linux
 * Acesso à Internet
 * Git instalado
 
@@ -23,7 +23,7 @@ O script irá verificar se o Chocolatey está instalado e, se não estiver, o in
 
 
 
-## Notas
+## Nota
 
 * O script funciona somente em sistemas operacionais Windows.
 * O script requer privilégios de administrador para executar corretamente.
@@ -39,3 +39,15 @@ vlc
 shotcut
 blender
 ```
+
+## Linux
+Se você usa Linux seja Debian, Fedora ou ArchLinux, basta abrir a pasta Linux e executar os comandos abaixo:
+
+```bash
+chmod +x install-apps.sh
+./install-apps.sh
+```
+
+## Nota
+
+Observe que é necessário ter permissões de administrador (sudo) para instalar os aplicativos. Se for solicitada a senha, insira-a e pressione Enter.
