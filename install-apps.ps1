@@ -14,9 +14,13 @@ $apps = Get-Content -Path "apps.txt"
 
 # Instalar cada aplicativo
 foreach ($app in $apps) {
-  Write-Output "Instalando $app"
-  choco install $app -y
-  Write-Output ""
+  Write-Output "Instalando $app..."
+  try {
+    choco install $app -y
+    Write-Output "$app instalado com sucesso." | Out-File "registro.log" -Append
+  } catch {
+    Write-Output "Ocorreu um erro ao instalar $app." | Out-File "error.log" -Append
+  }
 }
 
 Write-Output "Todos os aplicativos foram instalados com sucesso!"
