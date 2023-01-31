@@ -1,3 +1,5 @@
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
 Write-Output "Instalando aplicativos via Chocolatey"
 Write-Output ""
 
@@ -9,6 +11,15 @@ if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
   Write-Output ""
 }
 
+$defaultInstallPath = "$env:ProgramFiles"
+
+Write-Output "Digite o caminho completo do diretorio de instalacao [pressione ENTER caso queira o caminho padrao]: "
+$installPath = Read-Host
+
+if ([string]::IsNullOrWhiteSpace($installPath)) {
+  $installPath = $defaultInstallPath
+}
+
 # Ler o nome dos aplicativos do arquivo de texto
 $apps = Get-Content -Path "apps.txt"
 
@@ -16,7 +27,7 @@ $apps = Get-Content -Path "apps.txt"
 foreach ($app in $apps) {
   Write-Output "Instalando $app..."
   try {
-    choco install $app -y
+    choco install $app -y --installargs "--install-directory=$installPath"
     Write-Output "$app instalado com sucesso." | Out-File "registro.log" -Append
   } catch {
     Write-Output "Ocorreu um erro ao instalar $app." | Out-File "error.log" -Append
