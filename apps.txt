@@ -7,3 +7,8 @@ vlc
 shotcut
 blender
 python37
+notepadplusplus.install
+vscode
+intellijidea-community
+firefox
+googlechrome
