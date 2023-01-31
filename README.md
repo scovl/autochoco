@@ -46,7 +46,7 @@ gimp
 inkscape
 audacious
 audacity
-p7zip
+7zip
 vlc
 shotcut
 blender
