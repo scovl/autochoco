@@ -53,3 +53,7 @@ chmod +x install-apps.sh
 ## Nota
 
 Observe que é necessário ter permissões de administrador (sudo) para instalar os aplicativos. Se for solicitada a senha, insira-a e pressione Enter.
+
+
+## TODO
+1. Adicionar um parametro de path diferente da instalação (outra unidade de disco por ex)
