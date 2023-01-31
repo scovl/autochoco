@@ -40,6 +40,8 @@ shotcut
 blender
 ```
 
+* será gerado um arquivo `registro.log` onde contém tudo o que ocorreu em powershell e `error.log` para erros.
+
 ## Linux
 Se você usa Linux seja Debian, Fedora ou ArchLinux, basta abrir a pasta Linux e executar os comandos abaixo:
 
