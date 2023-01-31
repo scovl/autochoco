@@ -2,11 +2,23 @@
 Script de Instalação Automatizada de Aplicativos via Chocolatey
 
 Este script é destinado a automatizar a instalação de vários aplicativos em um sistema Windows utilizando o gerenciador de pacotes Chocolatey. O script verifica se o Chocolatey está instalado e, se não estiver, o instala antes de instalar os aplicativos especificados.
-Requisitos
 
-* Sistema operacional: Windows/Linux
+
+## Requisitos
+
+É necessário a execução de scripts PowerShell e, portanto você precisa usar o cmdlet Set-ExecutionPolicy:
+
+* Abra o PowerShell com privilégios elevados.
+* Digite o seguinte comando: `Set-ExecutionPolicy Unrestricted`
+* Escolha `"Y"` quando perguntado se deseja mudar a política de execução.
+
+Além disso, é necessário atender aos seguintes requisitos:
+
+* Sistema operacional: Microsoft Windows (qualquer versão)
 * Acesso à Internet
 * Git instalado
+
+A partir desse momento, você poderá executar scripts PowerShell sem restrições. Tenha cuidado ao liberar a execução de scripts, pois isso pode ser perigoso para a segurança do sistema.
 
 ## Instruções de uso
 
@@ -54,6 +66,3 @@ chmod +x install-apps.sh
 
 Observe que é necessário ter permissões de administrador (sudo) para instalar os aplicativos. Se for solicitada a senha, insira-a e pressione Enter.
 
-
-## TODO
-1. Adicionar um parametro de path diferente da instalação (outra unidade de disco por ex)
