@@ -10,8 +10,6 @@ Este script é destinado a automatizar a instalação de vários aplicativos em 
 * Acesso à Internet
 * Git instalado
 
-A partir desse momento, você poderá executar scripts PowerShell sem restrições. Tenha cuidado ao liberar a execução de scripts, pois isso pode ser perigoso para a segurança do sistema.
-
 ## Instruções de uso
 
 1. Abra o PowerShell com privilégios de administrador.
