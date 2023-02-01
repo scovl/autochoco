@@ -42,3 +42,8 @@ foreach ($app in $apps) {
 }
 
 Write-Output "Todos os aplicativos foram instalados com sucesso!"
+
+# Voltando a politica de segurança padrão do windows
+if ($policy -eq "Unrestricted") {
+  Set-ExecutionPolicy "Restricted"
+}
