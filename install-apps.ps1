@@ -1,5 +1,12 @@
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
+# Muda a policy para Unrestricted caso não esteja
+$policy = Get-ExecutionPolicy
+
+if ($policy -ne "Unrestricted") {
+  Set-ExecutionPolicy Unrestricted
+}
+
 Write-Output "Instalando aplicativos via Chocolatey"
 Write-Output ""
 
