@@ -14,7 +14,7 @@ Este script é destinado a automatizar a instalação de vários aplicativos em 
 * Acesso à Internet
 * Git instalado
 
-**NOTA**: Se não tiver o git instalado, baixe o zip do repositório que resolve também.
+**NOTA**: Se não tiver o git instalado, baixe o zip do repositório **[AQUI](https://github.com/lobocode/autochoco/archive/refs/heads/main.zip)**, descompacte em uma pasta e siga as instruções abaixo.
 
 ## Instruções de uso
 
