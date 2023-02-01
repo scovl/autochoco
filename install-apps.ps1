@@ -1,12 +1,5 @@
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-# Muda a policy para Unrestricted caso não esteja
-$policy = Get-ExecutionPolicy
-
-if ($policy -ne "Unrestricted") {
-  Set-ExecutionPolicy Unrestricted
-}
-
 Write-Output "Instalando aplicativos via Chocolatey"
 Write-Output ""
 
@@ -45,5 +38,5 @@ Write-Output "Todos os aplicativos foram instalados com sucesso!"
 
 # Voltando a politica de segurança padrão do windows
 if ($policy -eq "Unrestricted") {
-  Set-ExecutionPolicy "Restricted"
+  Set-ExecutionPolicy Restricted -force
 }

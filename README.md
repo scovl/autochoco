@@ -6,9 +6,15 @@ Este script é destinado a automatizar a instalação de vários aplicativos em 
 
 ## Requisitos
 
+É necessário a execução de scripts PowerShell e, portanto você precisa usar o cmdlet Set-ExecutionPolicy:
+
+* Abra o PowerShell como Administrador (clicando com o botão direito do mouse sobre o ícone do Powershell).
+* Digite o seguinte comando: `Set-ExecutionPolicy Unrestricted -force`
 * Sistema operacional: Microsoft Windows (qualquer versão)
 * Acesso à Internet
 * Git instalado
+
+**NOTA**: Se não tiver o git instalado, baixe o zip do repositório que resolve também.
 
 ## Instruções de uso
 
