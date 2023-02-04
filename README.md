@@ -16,9 +16,16 @@ Este script é destinado a automatizar a instalação de vários aplicativos em 
 
 ## Instruções de uso
 
-1. Abra o PowerShell com privilégios de administrador.
-2. Clone o repositório que contém o script executando o comando `git clone https://github.com/lobocode/autochoco.git`, entre na pasta autochoco e edite o arquivo de `apps.txt` com as ferramentas/aplicações que deseja instalar.
-4. Por fim, execute o script da seguinte maneira: `powershell.exe -ExecutionPolicy Bypass -File .\install-apps.ps1`
+1. Abra o PowerShell com privilégios de administrador, e digite os comandos a seguir:
+```powershell 
+git clone https://github.com/lobocode/autochoco.git
+cd autochoco
+
+# Após entrar na pasta autochoco e edite o arquivo de apps.txt com as ferramentas/aplicações que deseja instalar
+# Por fim digite o comando abaixo para executar o programa:
+powershell.exe -ExecutionPolicy Bypass -File .\install-apps.ps1
+
+```
 
 **NOTA**: O comando `powershell.exe -ExecutionPolicy Bypass -File .\install-apps.ps1` é usado para executar um script PowerShell `install-apps.ps1` com a política de execução "Bypass". Desta forma seu sistema executa o script sem modificar a política padrão de segurança restrita. Por fim, o script irá verificar se o Chocolatey está instalado e, se não estiver, o instalará antes de instalar cada aplicativo especificado no arquivo `apps.txt`.
 
