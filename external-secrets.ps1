@@ -34,15 +34,41 @@ foreach ($app in $apps) {
   }
 }
 
-# Instalar via go isntall
-go install go install github.com/mikefarah/yq/v4@latest
+# Instalar via go install
+go install github.com/mikefarah/yq/v4@latest
 go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest
 
-setup-envtest list --os $(go env GOOS) --arch $(go env GOARCH)
-setup-envtest use -p path 1.20.3
 
-source <(setup-envtest use 1.20.3 -p env --os $(go env GOOS) --arch $(go env GOARCH))
+$os = go env GOOS
+$arch = go env GOARCH
+
+setup-envtest list --os $os --arch $arch
+setup-envtest use -p path 1.20.2
+
+$envtestOutput = setup-envtest use 1.20.2 -p env --os $os --arch $arch
+
+
+if (![string]::IsNullOrEmpty($envtestOutput)) {
+    Invoke-Expression $envtestOutput
+}
+
+# Clonar o repositório do GitHub
+git clone git@github.com:kubernetes-sigs/kubebuilder
+
+# Acessar o diretório clonado
+cd kubebuilder
+
+# Compilar o binário do kubebuilder
+go build -o kubebuilder.exe ./cmd/
+
+# Executar o kubebuilder.exe e exibir o código completo
+./kubebuilder.exe -e | Out-String
+
+# Move o kubebuilder.exe para um diretório no PATH e remove o diretório kubebuilder
+Move-Item -Path kubebuilder.exe -Destination $env:USERPROFILE\bin
+Remove-Item -Path kubebuilder -Recurse
+
 
 helm plugin install https://github.com/helm-unittest/helm-unittest
 
-Write-Output "Todos os aplicativos foram instalados com sucesso!"
+Write-Output "`nTodos os aplicativos foram instalados com sucesso!"```
