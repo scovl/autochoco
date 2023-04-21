@@ -1,8 +1,0 @@
-gimp
-inkscape
-audacious
-audacity
-p7zip
-vlc
-shotcut
-blender
