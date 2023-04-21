@@ -34,41 +34,38 @@ foreach ($app in $apps) {
   }
 }
 
+# Obter as informações de ambiente do Go
+try {
+  $os = go env GOOS
+  $arch = go env GOARCH
+} catch {
+  Write-Output "Ocorreu um erro ao executar 'go env'. Verifique se o Go está instalado corretamente e configurado corretamente no PATH." | Out-File "error.log" -Append
+}
+
 # Instalar via go install
-go install github.com/mikefarah/yq/v4@latest
-go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest
+try {
+  go install github.com/mikefarah/yq/v4@latest
+  go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest
+} catch {
+  Write-Output "Ocorreu um erro ao executar 'go install'. Verifique se o Go está instalado corretamente e configurado corretamente no PATH." | Out-File "error.log" -Append
+}
 
-
-$os = go env GOOS
-$arch = go env GOARCH
-
-setup-envtest list --os $os --arch $arch
-setup-envtest use -p path 1.20.2
-
-$envtestOutput = setup-envtest use 1.20.2 -p env --os $os --arch $arch
-
+# Configurar o ambiente de teste do Kubernetes
+try {
+  setup-envtest list --os $os --arch $arch
+  setup-envtest use -p path 1.20.2
+  $envtestOutput = setup-envtest use 1.20.2 -p env --os $os --arch $arch
+} catch {
+  Write-Output "Ocorreu um erro ao executar 'setup-envtest'. Verifique se o Go está instalado corretamente e configurado corretamente no PATH." | Out-File "error.log" -Append
+}
 
 if (![string]::IsNullOrEmpty($envtestOutput)) {
     Invoke-Expression $envtestOutput
 }
 
-# Clonar o repositório do GitHub
-git clone git@github.com:kubernetes-sigs/kubebuilder
-
-# Acessar o diretório clonado
-cd kubebuilder
-
-# Compilar o binário do kubebuilder
-go build -o kubebuilder.exe ./cmd/
-
-# Executar o kubebuilder.exe e exibir o código completo
-./kubebuilder.exe -e | Out-String
-
-# Move o kubebuilder.exe para um diretório no PATH e remove o diretório kubebuilder
-Move-Item -Path kubebuilder.exe -Destination $env:USERPROFILE\bin
-Remove-Item -Path kubebuilder -Recurse
-
-
-helm plugin install https://github.com/helm-unittest/helm-unittest
-
-Write-Output "`nTodos os aplicativos foram instalados com sucesso!"```
+# descompacta zip na pasta $env:USERPROFILE\AppData\Local\kubebuilder-envtest\k8s
+try {
+  Expand-Archive -Path kubebuilder.zip -DestinationPath $env:USERPROFILE\AppData\Local\kubebuilder-envtest\k8s
+} catch {
+  Write-Output "Ocorreu um erro ao descompactar 'kubebuilder.zip'. Verifique se o arquivo existe e se você tem permissão para escrever na pasta de destino." | Out-File "error.log" -Append
+}
