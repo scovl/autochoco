@@ -69,3 +69,24 @@ try {
 } catch {
   Write-Output "An error occurred while unzipping 'kubebuilder.zip'. Please check that the file exists and that you have permission to write to the destination folder." | Out-File "error.log" -Append
 }
+
+# Define the path to be added
+$PathToAdd = "$env:USERPROFILE\AppData\Local\kubebuilder-envtest\k8s"
+
+# Check if the path already exists in the system Path
+if ([Environment]::GetEnvironmentVariable("Path", "Machine") -notlike "*$PathToAdd*") {
+    # Add the path to the System Path
+    $CurrentValue = [Environment]::GetEnvironmentVariable("Path", "Machine")
+    $NewValue = "$CurrentValue;$PathToAdd"
+    [Environment]::SetEnvironmentVariable("Path", $NewValue, "Machine")
+
+    # Update the System Path to the current PowerShell
+    $env:Path = [Environment]::GetEnvironmentVariable("Path", "User") + ";" + $NewValue
+}
+
+$response = Read-Host "An operation requires a restart. Do you want to restart now? (Y/N)"
+if ($response -eq "Y" -or $response -eq "y") {
+    Restart-Computer -Force
+} else {
+    Write-Host "The operation cannot be completed without restarting Windows. Please consider restarting your computer soon."
+}
