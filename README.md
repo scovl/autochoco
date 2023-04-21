@@ -54,16 +54,3 @@ googlechrome
 ```
 
 * Será gerado um arquivo `registro.log` onde contém tudo o que ocorreu em powershell e `error.log` para erros.
-
-## Linux
-Se você usa Linux seja Debian, Fedora ou ArchLinux, basta abrir a pasta Linux e executar os comandos abaixo:
-
-```bash
-chmod +x install-apps.sh
-./install-apps.sh
-```
-
-## Nota
-
-Observe que é necessário ter permissões de administrador (sudo) para instalar os aplicativos. Se for solicitada a senha, insira-a e pressione Enter.
-
