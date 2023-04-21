@@ -65,7 +65,7 @@ if (![string]::IsNullOrEmpty($envtestOutput)) {
 
 # Unzip a file to the directory $env:USERPROFILE\AppData\Local\kubebuilder-envtest\k8s
 try {
-  Expand-Archive -Path kubebuilder.zip -DestinationPath $env:USERPROFILE\AppData\Local\kubebuilder-envtest\k8s
+  Expand-Archive -Path ../kubebuilder.zip -DestinationPath $env:USERPROFILE\AppData\Local\kubebuilder-envtest\k8s
 } catch {
   Write-Output "An error occurred while unzipping 'kubebuilder.zip'. Please check that the file exists and that you have permission to write to the destination folder." | Out-File "error.log" -Append
 }
